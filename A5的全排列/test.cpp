@@ -4,6 +4,7 @@ using namespace std;
 #include<string>
 
 class Solution{
+public:
 	vector<vector<int>> result;
 
 	void PaiLie1(vector<int> data, int begin){
@@ -25,12 +26,22 @@ class Solution{
 			return result;
 		}
 		PaiLie1(data, 0);
+		return result;
 	}
 
 };
 
 void TestFunc(){
-
+	Solution s;
+	vector<int> data = { 1, 2, 3, 4, 5 };
+	vector<vector<int>> array=s.PaiLie(data);
+	int i = 0;
+	for (i = 0; i < array.size(); ++i){
+		for (int j = 0; j < array[0].size(); ++j){
+			cout << array[i][j] << " ";
+		}
+		cout << endl;
+	}
 }
 
 int main(){
