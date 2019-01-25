@@ -6,14 +6,16 @@ using namespace std;
 class Solution{
 public:
 	vector<vector<int>> result;
+	int count = 0;
 
 	void PaiLie1(vector<int> data, int begin){
 		if (data.size() == begin){
 			result.push_back(data);
+			++count;
 			return;
 		}
 		for (int i = begin; i < data.size(); ++i){
-			if (i != begin&&data[i] != data[begin])
+			if (i != begin&&data[i] == data[begin])
 				continue;
 			swap(data[i], data[begin]);
 			PaiLie1(data, begin + 1);
@@ -33,7 +35,7 @@ public:
 
 void TestFunc(){
 	Solution s;
-	vector<int> data = { 1, 2, 3, 4, 5 };
+	vector<int> data = { 1, 2, 3/*, 4, 5*/ };
 	vector<vector<int>> array=s.PaiLie(data);
 	int i = 0;
 	for (i = 0; i < array.size(); ++i){
@@ -42,6 +44,7 @@ void TestFunc(){
 		}
 		cout << endl;
 	}
+	cout << "共有" << s.count << "中组合" << endl;
 }
 
 int main(){
